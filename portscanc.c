@@ -11,7 +11,7 @@ int type = socket type. SOCKSTEAM - tcp,  SOCK_DGRAM - udp
 int protocol = 0 is mostly used because its "automatic"
 */
 
-void error_msg()
+void help_msg()
 {
 	//fprintf(stderr,"Failed to initialize scan. Please verify that the parameters are entered correctly.\n");
 	printf("\nUsage:\n");
@@ -65,21 +65,24 @@ int main(int argc, char *argv[])
 	target = argv[1];
 	
 	// Detects if IP has less than 7 chars.
-	if (argc>1)
+	if (argc>1 && strlen(argv[1]) < 7)
 	{
-		if(strlen(argv[1]) <7)
+		if (strcmp(argv[1], "-h")==0 || strcmp(argv[1], "--help")==0)
 		{
-			fprintf(stderr, "(Error): Please write a proper IP address.\n");
-			error_msg();
+			help_msg();
 		}
+		else
+		{
+			fprintf(stderr, "ERROR - Please write a proper IP address.\n");
+			help_msg();
+		}
+
+	//	else if(strlen(argv[1]) <7)
+	//	{
+	//		fprintf(stderr, "(Error): Please write a proper IP address.\n");
+	//		help_msg();
+	//	}
 	}
-//	check_valid_ip(int arg)
-//	{
-//		if(strlen(arg) < 7)
-//			error_msg();
-//		}
-//	
-//	}
 
 	// Scan all ports.
 	if(argc==2)
@@ -130,7 +133,7 @@ int main(int argc, char *argv[])
 	//Help/error msg.
 	else
 	{
-		error_msg();
+		help_msg();
 	}
 }
 
