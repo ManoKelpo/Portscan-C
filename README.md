@@ -1,6 +1,5 @@
-# portscan-c
+# Portscan-C
 A quick portscanner made in C.
-
 ## Usage:
  -To scan a single port:
   `./portscanc ip port` 
@@ -13,4 +12,8 @@ A quick portscanner made in C.
 
  -Example: 
   `./portscanc 192.168.0.1 0 5000`
+
+## Compatibility:
+Tested in Kali GNU/Linux 2023.3.
+Doest not work in Windows.
 
